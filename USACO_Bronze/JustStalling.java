@@ -2,14 +2,15 @@
 PROBLEM: Just Stalling (USACO January 2021 Bronze #3)
 LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=1085
 
-
+For partial credit, finding all possible permuations and making sure the stall heights satisfy the cow heights is enough. For full credit, find how manystalls are 
+available for each cow.
 */
 
 import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main3 {
+public class JustStalling {
     static int n;
     static long[] a;
     static long[] b;
@@ -38,6 +39,7 @@ public class Main3 {
                 }
             }
         }
+
         Arrays.sort(available);
         for (int i = 0; i < n; i++) {
             ans *= (available[i]-i);
