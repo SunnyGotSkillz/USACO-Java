@@ -2,8 +2,9 @@
 PROBLEM: Hoof Paper Scissors (USACO January 2017 Silver #2)
 LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=691
 
-Similar to Breed Counting silver problem. Use prefix sums to store the count of each move at every point. Loop thru every "pivot" index and find where theres a max
-number of wins for Bessie.
+Similar to Breed Counting silver problem. Use prefix sums to store the count of each of FJ's move at every point. Since Bessie can only change her move once, find
+the index where she does this. For each index i see how many wins are possible before that i and how many are possible after if a switch is made, since there is
+only one way to beat each move.
 */
 
 import java.util.*;

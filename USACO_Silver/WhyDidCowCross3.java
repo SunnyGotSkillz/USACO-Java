@@ -5,8 +5,8 @@ LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=716
 
 import java.io.*;
 import java.util.*;
+
 public class Main {
-    
     static Set<State>[][] badFields;
     static int n, k, r;
     
