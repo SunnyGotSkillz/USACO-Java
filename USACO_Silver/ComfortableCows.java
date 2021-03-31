@@ -18,7 +18,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class ComfortableCows {
     static int n;
     static Cow[] cows;
     static int[][] grid;

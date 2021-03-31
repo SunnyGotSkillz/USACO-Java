@@ -11,7 +11,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class HaybaleStacking {
     static int n;
     static int k;
     static int[] stacks;

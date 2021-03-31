@@ -13,7 +13,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main2 {
+public class YearOfTheCow {
     static int n;
     static int k;
     static int[] ancestors;
