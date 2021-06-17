@@ -7,7 +7,7 @@ TASK: Blocked Billboard 2 (USACO January 2018 Bronze #1)
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class BlockedBillboard2 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("billboard.in"));
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("billboard.out")));

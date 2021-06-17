@@ -10,7 +10,7 @@ became sick during the party. The max number of people who got sick for a certai
 import java.io.*;
 import java.util.*;
 
-public class badmilk {
+public class ContaminatedMilk {
 	/*
 	 * For record i of a person drinking milk, we store data as follows:
 	 * personDrink[i]: the person who drank the milk

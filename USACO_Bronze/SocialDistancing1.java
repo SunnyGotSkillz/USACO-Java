@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class SocialDistancing1 {
     public static void main(String[] args) throws IOException {
         //BufferedReader in = new BufferedReader(new FileReader("socdist1.in"));
         //PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("socdist1.out")));

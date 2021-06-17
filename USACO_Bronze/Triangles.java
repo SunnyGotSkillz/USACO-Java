@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class Triangles {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("triangles.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("triangles.out")));

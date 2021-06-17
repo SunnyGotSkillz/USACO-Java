@@ -12,7 +12,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class CowEvolution {
     static int n;
     static ArrayList<String> all_characteristics;
     static ArrayList<String>[] chars;

@@ -13,7 +13,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class FamilyTree {
     static ArrayList<String> cows;
     static ArrayList<ArrayList<String>> family;
     public static void main(String[] args) throws IOException {

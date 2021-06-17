@@ -6,7 +6,7 @@ LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=1012
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class MadScientist {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("breedflip.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("breedflip.out")));

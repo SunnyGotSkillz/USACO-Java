@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class ModernArt {
     static int n;
     static int[][] art;
 

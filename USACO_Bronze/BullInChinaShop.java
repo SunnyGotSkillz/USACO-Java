@@ -6,7 +6,7 @@ The figurine is small enough and there are few enough pieces that we can check e
 Because the board has size N, we can shift either vertically or horizontally in either direction by at most N-1.
 */
 
-public class Main {
+public class BullInChinaShop {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("bcs.in"));
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("bcs.out")));

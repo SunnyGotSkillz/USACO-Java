@@ -8,7 +8,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class WhyDidCowCross3 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("cowqueue.in"));
         PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("cowqueue.out")));

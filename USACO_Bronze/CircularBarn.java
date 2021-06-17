@@ -8,7 +8,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class CircularBarn {
     public static void main(String[] args) throws IOException {
         BufferedReader f = new BufferedReader(new FileReader("cbarn.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("cbarn.out")));

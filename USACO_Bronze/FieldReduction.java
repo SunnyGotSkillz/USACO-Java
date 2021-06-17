@@ -7,7 +7,7 @@ TASK: Field Reduction (USACO US Open 2016 Bronze #3)
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class FieldReduction {
 	// x1 and x2 are the smallest x-coordinates seen
 	// x3 and x4 are the largest x-coordinates seen
 	static int x1, x2, x3, x4;

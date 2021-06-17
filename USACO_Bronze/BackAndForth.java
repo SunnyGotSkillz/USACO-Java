@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class BackAndForth {
     static int[] possible = new int[2000]; // good estimate for range of possible values in first tank
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("backforth.in"));

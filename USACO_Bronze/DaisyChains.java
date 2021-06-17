@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main2 {
+public class DaisyChains {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 

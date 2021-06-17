@@ -7,7 +7,7 @@ TASK: Promotion Counting (USACO January 2016 Bronze #1)
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class PromotionCounting {
 	public static void main(String[] args) throws IOException {
 		// initialize file I/O
 		BufferedReader br = new BufferedReader(new FileReader("promote.in"));

@@ -11,7 +11,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main2 {
+public class TheGreatRevegetation {
     static int n;
     static int m;
     static ArrayList<Integer>[] adj;

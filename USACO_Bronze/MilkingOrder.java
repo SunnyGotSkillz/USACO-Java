@@ -14,7 +14,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class MilkingOrder {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("milkorder.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("milkorder.out")));

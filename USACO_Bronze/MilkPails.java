@@ -8,7 +8,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class MilkPails {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("pails.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("pails.out")));

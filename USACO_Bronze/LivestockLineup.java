@@ -9,7 +9,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class LivestockLineup {
     static ArrayList<String> permutation;
     static boolean[] chosen;
     static int count = 8;

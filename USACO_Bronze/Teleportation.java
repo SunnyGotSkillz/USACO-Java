@@ -8,7 +8,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class Teleportation {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader("teleport.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("teleport.out")));

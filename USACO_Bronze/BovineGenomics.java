@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class BovineGenomics {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("cownomics.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("cownomics.out")));

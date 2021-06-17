@@ -9,7 +9,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class TeamTicTacToe {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("tttt.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("tttt.out")));

@@ -7,7 +7,7 @@ TASK: Lifeguards (USACO January 2018 Bronze #2)
 import java.io.*;
 import java.util.*;
 
-public class lifeguards {
+public class Lifeguards {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("lifeguards.in"));
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("lifeguards.out")));

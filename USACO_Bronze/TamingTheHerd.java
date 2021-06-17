@@ -7,7 +7,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class TamingTheHerd {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("taming.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("taming.out")));
