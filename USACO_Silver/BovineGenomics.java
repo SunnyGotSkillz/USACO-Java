@@ -2,14 +2,16 @@
 PROBLEM: Bovine Genomics (USACO US Open 2017 Silver #2)
 LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=739#
 
-SOLUTION: http://www.usaco.org/current/data/sol_cownomics_silver_open17.html
+Convert the ACGT into 0123. We will try every combination of three indices to see if it works. To test a combination, we use an array with 64 elements (since there are
+64 possible combinations) and determine which ones correspond to the combinations taken by the spotty cows. Then we check if the plain cows correspond to any of these.
+If they do, then this combination does not work, otherwise it does work.
 */
 
 import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class BovineGenomics {
     static int n;
     static int m;
     static String[] spotty;
