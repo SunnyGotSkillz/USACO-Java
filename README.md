@@ -1,2 +1,2 @@
 # USACO-Java
-USACO Java Bronze and Silver solutions
+USACO Bronze and Silver solutions in Java
