@@ -12,34 +12,28 @@ import java.io.*;
 import java.lang.*;
 
 public class HaybaleStacking {
-    static int n;
-    static int k;
-    static int[] stacks;
-    static int[] differences;
     public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader in = new BufferedReader(new FileReader("stacking.in"));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("stacking.out")));
         StringTokenizer st = new StringTokenizer(in.readLine());
 
-        n = Integer.parseInt(st.nextToken());
-        k = Integer.parseInt(st.nextToken());
-        stacks = new int[n];
-        differences = new int[n+1];
+        int n = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
+        int[] diff = new int[n+1];
         for (int i = 0; i < k; i++) {
             st = new StringTokenizer(in.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            differences[a-1]++;
-            differences[b]--;
+            diff[a-1]++;
+            diff[b]--;
         }
 
-        int val = 0;
-        for (int i = 0; i < n; i++) {
-            val += differences[i];
-            stacks[i] = val;
+        for (int i = 1; i < n; i++) {
+            diff[i] += diff[i-1];
         }
+        Arrays.sort(diff);
 
-        Arrays.sort(stacks);
-
-        System.out.println(stacks[n/2]);
+        out.println(diff[n/2 + 1]);
+        out.close();
     }
 }
