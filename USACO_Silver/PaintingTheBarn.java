@@ -16,7 +16,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class PaintingTheBarn {
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("paintbarn.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("paintbarn.out")));
@@ -32,40 +32,33 @@ public class PaintingTheBarn {
             int x2 = Integer.parseInt(st.nextToken());
             int y2 = Integer.parseInt(st.nextToken());
             barn[x1][y1]++;
-            barn[x2][y2]++;
             barn[x1][y2]--;
+            barn[x2][y2]++;
             barn[x2][y1]--;
         }
 
-        int[][] sum = new int[1002][1002];
-        fill2DPrefixSum(barn, sum);
+        int[][] psa = new int[1002][1002];
+        for (int i = 1; i <= 1001; i++)
+            psa[1][i] = psa[1][i-1] + barn[0][i-1];
+        for (int i = 1; i <= 1001; i++)
+            psa[i][1] = psa[i-1][1] + barn[i-1][0];
+
+        for (int i = 2; i <= 1001; i++) {
+            for (int j = 2; j <= 1001; j++) {
+                psa[i][j] = psa[i-1][j] + psa[i][j-1] - psa[i-1][j-1] + barn[i-1][j-1];
+            }
+        }
 
         int ans = 0;
         for (int i = 0; i < 1002; i++) {
             for (int j = 0; j < 1002; j++) {
-                if (sum[i][j] == k) ans++;
+                if (psa[i][j] == k) {
+                    ans++;
+                }
             }
         }
 
         out.println(ans);
         out.close();
-    }
-
-    public static void fill2DPrefixSum(int[][] a, int[][] psa) {
-        int R = a.length;
-        int C = a[0].length;
-
-        for (int i = 0; i < psa.length; i++) psa[0][i] = 0;
-        
-        for (int i = 1; i < psa.length; i++) psa[i][0] = 0;
-
-        for (int i = 1; i <= C; i++) psa[1][i] = psa[1][i - 1] + a[0][i-1];
-        for (int i = 1; i <= R; i++) psa[i][1] = psa[i - 1][1] + a[i-1][0];
-
-        for (int i = 2; i <= R; i++) {
-            for (int j = 2; j <= C; j++) {
-                psa[i][j] = psa[i - 1][j] + psa[i][j - 1] - psa[i - 1][j - 1] + a[i-1][j-1];
-            }
-        }
     }
 }
