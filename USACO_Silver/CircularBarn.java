@@ -10,69 +10,32 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Main {
+public class CircularBarn {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new FileReader("cbarn.in"));
         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("cbarn.out")));
 
         int n = Integer.parseInt(in.readLine());
-        int[] cows = new int[n];
+        int[] rooms = new int[n];
+        int cowTotal = 0;
         for (int i = 0; i < n; i++) {
-            cows[i] = Integer.parseInt(in.readLine());
+            rooms[i] = Integer.parseInt(in.readLine());
+            cowTotal += rooms[i];
         }
 
-        int res = Integer.MAX_VALUE;
-
-        // Try each rotation.
-        for (int i=0; i<n; i++) {
-
-            // Copy in this rotation to make life easy.
-            int[] rot = new int[n];
-            for (int j=0; j<n; j++)
-                rot[j] = cows[(i+j)%n];
-
-            // See if this rotation is possible.
-            int total = 0;
-            boolean flag = true;
-            for (int j=n-1; j>=0; j--) {
-                total += rot[j];
-                if (total > n-j) {
-                    flag = false;
-                    break;
-                }
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            int distance = 0;
+            int tempTotal = cowTotal;
+            for (int j = 0; j < n; j++) {
+                int index = (i + j) % n;
+                tempTotal -= rooms[index];
+                distance += tempTotal;
             }
-
-            // Can't do this.
-            if (!flag) continue;
-
-            // Find last 0 slot, initially.
-            int cost = 0;
-            int last = n-1;
-            while (last >= 0 && rot[last] != 0) last--;
-
-            // Now go backwards.
-            for (int j=last-1; j>=0; j--) {
-
-                // As long as this room has cows to donate.
-                while (rot[j] > 0) {
-
-                    if (last == -1 || last < j) break;
-
-                    // Move a cow from j to last.
-                    rot[j]--;
-                    rot[last]++;
-                    cost = cost + (last-j)*(last-j);
-
-                    // Update last.
-                    while (last >= 0 && rot[last] != 0) last--;
-                }
-            }
-
-            // See if this is better or not.
-            res = Math.min(res, cost);
+            ans = Math.min(ans, distance);
         }
 
-        out.println(res);
+        out.println(ans);
         out.close();
     }
 }

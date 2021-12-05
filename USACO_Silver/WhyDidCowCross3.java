@@ -1,82 +1,86 @@
 /*
 PROBLEM: Why Did the Cow Cross the Road III (USACO February 2017 Silver #3)
 LINK: http://www.usaco.org/index.php?page=viewproblem2&cpid=716
+
+Store the roads as a 2D array where each point contains a set representing adjacent points that contain a road. For each pair of cows, run a floodfill. Don't continue
+if there is a road present. At the end, check if we were able to visit our destination cow without crossing any roads. If not then add one to the answer.
+
+Hash code and equals functions on the Point class are because we use a set and we have to determine whether two Point objects are equal.
 */
 
-import java.io.*;
 import java.util.*;
+import java.io.*;
+import java.lang.*;
 
-public class Main {
-    static Set<State>[][] badFields;
-    static int n, k, r;
-    
+public class WhyDidCowCross3 {
+    static int n;
+    static boolean[][] visited;
+    static Set<Point>[][] farm;
+
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader("countcross.in"));
-        PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("countcross.out")));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        BufferedReader in = new BufferedReader(new FileReader("countcross.in"));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("countcross.out")));
+        StringTokenizer st = new StringTokenizer(in.readLine());
+
         n = Integer.parseInt(st.nextToken());
-        k = Integer.parseInt(st.nextToken());
-        r = Integer.parseInt(st.nextToken());
-        badFields = new Set[n][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                badFields[i][j] = new HashSet<State>();
+        int k = Integer.parseInt(st.nextToken());
+        int r = Integer.parseInt(st.nextToken());
+        farm = new Set[n][n];
+        Point[] cows = new Point[k];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                farm[i][j] = new HashSet<>();
             }
         }
-        for(int i = 0; i < r; i++) {
-            st = new StringTokenizer(br.readLine());
-            int x1 = Integer.parseInt(st.nextToken()) - 1;
-            int y1 = Integer.parseInt(st.nextToken()) - 1;
-            int x2 = Integer.parseInt(st.nextToken()) - 1;
-            int y2 = Integer.parseInt(st.nextToken()) - 1;
-            badFields[x1][y1].add(new State(x2, y2));
-            badFields[x2][y2].add(new State(x1, y1));
+        for (int i = 0; i < r; i++) {
+            st = new StringTokenizer(in.readLine());
+            int x1 = Integer.parseInt(st.nextToken())-1;
+            int y1 = Integer.parseInt(st.nextToken())-1;
+            int x2 = Integer.parseInt(st.nextToken())-1;
+            int y2 = Integer.parseInt(st.nextToken())-1;
+            farm[x1][y1].add(new Point(x2, y2));
+            farm[x2][y2].add(new Point(x1, y1));
         }
-        State[] points = new State[k];
-        int ret = 0;
-        for(int i = 0; i < k; i++) {
-            st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken()) - 1;
-            int y = Integer.parseInt(st.nextToken()) - 1;
-            points[i] = new State(x, y);
-            boolean[][] reachable = new boolean[n][n];
-            dfs(reachable, x, y);
-            for(int j = 0; j < i; j++) {
-                if(!reachable[points[j].x][points[j].y]) {
-                    ret++;
-                }
-            }
-        }
-        pw.println(ret);
-        pw.close();
-    }
-    
-    static int[] dx = new int[]{-1,0,1,0};
-    static int[] dy = new int[]{0,1,0,-1};
-    
-    public static void dfs(boolean[][] reachable, int x, int y) {
-        if(x < 0 || x >= reachable.length || y < 0 || y >= reachable[x].length || reachable[x][y]) {
-            return;
-        }
-        reachable[x][y] = true;
-        for(int k = 0; k < dx.length; k++) {
-            int nx = x + dx[k];
-            int ny = y + dy[k];
-            if(!badFields[x][y].contains(new State(nx, ny))) {
-                dfs(reachable, nx, ny);
-            }
-        }
-    }
-    
-    static class State {
-        int x, y;
-
-        public State(int x, int y) {
-            super();
-            this.x = x;
-            this.y = y;
+        for (int i = 0; i < k; i++) {
+            st = new StringTokenizer(in.readLine());
+            int x = Integer.parseInt(st.nextToken())-1;
+            int y = Integer.parseInt(st.nextToken())-1;
+            cows[i] = new Point(x, y);
         }
 
+        int ans = 0;
+        for (int i = 0; i < k; i++) {
+            for (int j = i+1; j < k; j++) {
+                visited = new boolean[n][n];
+                floodfill(cows[i].x, cows[i].y, cows[i].x, cows[i].y, cows[j].x, cows[j].y);
+                if (!visited[cows[j].x][cows[j].y]) ans++;
+            }
+        }
+
+        out.println(ans);
+        out.close();
+    }
+
+    static void floodfill(int currR, int currC, int prevR, int prevC, int endR, int endC) {
+        if (currR < 0 || currR >= n || currC < 0 || currC >= n) return;
+        if (visited[endR][endC]) return;
+        if (farm[currR][currC].contains(new Point(prevR, prevC))) return;
+        if (visited[currR][currC]) return;
+        visited[currR][currC] = true;
+        if (currR == endR && currC == endC) return;
+        floodfill(currR, currC+1, currR, currC, endR, endC);
+        floodfill(currR, currC-1, currR, currC, endR, endC);
+        floodfill(currR+1, currC, currR, currC, endR, endC);
+        floodfill(currR-1, currC, currR, currC, endR, endC);
+    }
+
+    public static class Point {
+        int x;
+        int y;
+        public Point(int x1, int y1) {
+            x = x1;
+            y = y1;
+        }
         @Override
         public int hashCode() {
             final int prime = 31;
@@ -85,7 +89,6 @@ public class Main {
             result = prime * result + y;
             return result;
         }
-
         @Override
         public boolean equals(Object obj) {
             if (this == obj)
@@ -94,13 +97,12 @@ public class Main {
                 return false;
             if (getClass() != obj.getClass())
                 return false;
-            State other = (State) obj;
+            Point other = (Point) obj;
             if (x != other.x)
                 return false;
             if (y != other.y)
                 return false;
             return true;
         }
-        
     }
 }
